@@ -32,6 +32,7 @@ public class LogoutFilter extends ClientFilter {
     private void destroySession(String accessToken) {
         final HttpSession session = getSessionMappingStorage().removeSessionByMappingId(accessToken);
         if (session != null) {
+            //使此session失效，但是返回后浏览器会立即生成一个新的session
             session.invalidate();
         }
     }
